@@ -15,6 +15,12 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
+    "proxies": [
+    {
+        "path": "/api",
+        "proxyUrl": "http://api.steampowered.com"
+    }
+]
   }
 }
