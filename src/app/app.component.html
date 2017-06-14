@@ -1,17 +1,15 @@
 <nav class="navbar navbar-dark bg-primary">
-    <div class="container-fluid">
+    <div class="container-fluid text-center">
+      <h1>Weathery</h1>
     </div>
 </nav>
 <div class="container center text-center">
     <div class="container inner_container">
         <div class="row text-center">
-            <div class="page-header">
-                <h1>Weathery</h1>
-            </div>
             <form>
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                    <input class="form-control" type="text" name='city' placeholder="Enter city" [(ngModel)]="city"/>
+                    <input class="form-control" type="text" name='city' placeholder="Enter city" [(ngModel)]="city" (keyup.enter)="search()"/>
                 </div>
                 <button type="button" class="btn btn-primary btn-block" (click)="search()"><span class="glyphicon glyphicon-search"></span>
                     Search</button>
@@ -21,7 +19,12 @@
 </div>
 <div class="container text-center" *ngIf="this.climate != ''">
   <h1>{{this.city |  uppercase}}</h1>
-  <p>{{this.climate}}:{{this.description}}</p>
-  <img class="climate-image" [src]="this.image_url"/>
-
+  <p>{{this.climate}}:{{this.description}} <img class="climate-image" [src]="this.image_url"/></p>
 </div>
+
+  <agm-map [latitude]="this.lat" [longitude]="this.long" [scrollwheel]="false" *ngIf="this.climate != ''">
+    <agm-marker [latitude]="this.lat" [longitude]="this.long" [iconUrl]="{url:this.image_url,scaledSize: {
+        height: 80,
+        width: 80
+      }}"></agm-marker>
+  </agm-map>

@@ -9,7 +9,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Osw
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
 
 // module
-exports.push([module.i, "body\n{\n    font-family: 'Open Sans', sans-serif;\n}\n\n.Absolute-Center {\n    margin: auto;\n    position: absolute;\n    top: 0; left: 0; bottom: 0; right: 0;\n}\n.Absolute-Center.is-Responsive {\n    width: 50%;\n    height: 50%;\n    min-width: 200px;\n    max-width: 400px;\n    padding: 40px;\n}\n.center{\n    max-width: 35%;\n    max-height: 50%;\n    margin: auto;\n    margin-top: 10%;\n}\n\n.inner_container{\n    max-width: 100%;\n    max-height: 100%;\n    padding: 10px;\n}\n\n.text{\n    color: white;\n}\n.climate-image{\n  min-height: 30px;\n  min-width: 100px;\n}\n", ""]);
+exports.push([module.i, "body\n{\n    font-family: 'Open Sans', sans-serif;\n}\n\n.Absolute-Center {\n    margin: auto;\n    position: absolute;\n    top: 0; left: 0; bottom: 0; right: 0;\n}\n.Absolute-Center.is-Responsive {\n    width: 50%;\n    height: 50%;\n    min-width: 200px;\n    max-width: 400px;\n    padding: 40px;\n}\n.center{\n    max-width: 35%;\n    max-height: 50%;\n    margin: auto;\n    margin-top: 1%;\n}\n\n.inner_container{\n    max-width: 100%;\n    max-height: 100%;\n    padding: 10px;\n}\n\n.text{\n    color: white;\n}\n.climate-image{\n  min-height: 30px;\n  min-width: 100px;\n}\nagm-map {\n      height: 500px;\n      width: 100%;\n      margin-left: 0 !important;\n      margin-right: 0 !important;\n      padding: 0 !important;\n    }\n", ""]);
 
 // exports
 

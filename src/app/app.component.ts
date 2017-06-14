@@ -8,6 +8,8 @@ import {Weather} from './weather.service';
   providers:[Weather]
 })
 export class AppComponent {
+  lat:number;
+  long:number;
   city:string='';
   climate:any='';
   icon:string='';
@@ -21,6 +23,8 @@ export class AppComponent {
       this.description=data.weather[0].description;
       this.icon=data.weather[0].icon;
       this.image_url="http://openweathermap.org/img/w/"+this.icon+".png";
+      this.long=data.coord.lon;
+      this.lat=data.coord.lat;
       console.log(this.image_url);
       console.log(data);
     })

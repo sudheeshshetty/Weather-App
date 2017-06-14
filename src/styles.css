@@ -21,7 +21,7 @@ body
     max-width: 35%;
     max-height: 50%;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 1%;
 }
 
 .inner_container{
@@ -37,3 +37,10 @@ body
   min-height: 30px;
   min-width: 100px;
 }
+agm-map {
+      height: 500px;
+      width: 100%;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 0 !important;
+    }

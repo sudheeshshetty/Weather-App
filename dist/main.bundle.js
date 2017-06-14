@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-dark bg-primary\">\n    <div class=\"container-fluid\">\n    </div>\n</nav>\n<div class=\"container center text-center\">\n    <div class=\"container inner_container\">\n        <div class=\"row text-center\">\n            <div class=\"page-header\">\n                <h1>Weathery</h1>\n            </div>\n            <form>\n                <div class=\"form-group input-group\">\n                    <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-home\"></i></span>\n                    <input class=\"form-control\" type=\"text\" name='city' placeholder=\"Enter city\" [(ngModel)]=\"city\"/>\n                </div>\n                <button type=\"button\" class=\"btn btn-primary btn-block\" (click)=\"search()\"><span class=\"glyphicon glyphicon-search\"></span>\n                    Search</button>\n            </form>\n        </div>\n    </div>\n</div>\n<div class=\"container text-center\" *ngIf=\"this.climate != ''\">\n  <h1>{{this.city |  uppercase}}</h1>\n  <p>{{this.climate}}:{{this.description}}</p>\n  <img class=\"climate-image\" [src]=\"this.image_url\"/>\n\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-dark bg-primary\">\n    <div class=\"container-fluid text-center\">\n      <h1>Weathery</h1>\n    </div>\n</nav>\n<div class=\"container center text-center\">\n    <div class=\"container inner_container\">\n        <div class=\"row text-center\">\n            <form>\n                <div class=\"form-group input-group\">\n                    <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-home\"></i></span>\n                    <input class=\"form-control\" type=\"text\" name='city' placeholder=\"Enter city\" [(ngModel)]=\"city\" (keyup.enter)=\"search()\"/>\n                </div>\n                <button type=\"button\" class=\"btn btn-primary btn-block\" (click)=\"search()\"><span class=\"glyphicon glyphicon-search\"></span>\n                    Search</button>\n            </form>\n        </div>\n    </div>\n</div>\n<div class=\"container text-center\" *ngIf=\"this.climate != ''\">\n  <h1>{{this.city |  uppercase}}</h1>\n  <p>{{this.climate}}:{{this.description}} <img class=\"climate-image\" [src]=\"this.image_url\"/></p>\n</div>\n\n  <agm-map [latitude]=\"this.lat\" [longitude]=\"this.long\" [scrollwheel]=\"false\" *ngIf=\"this.climate != ''\">\n    <agm-marker [latitude]=\"this.lat\" [longitude]=\"this.long\" [iconUrl]=\"{url:this.image_url,scaledSize: {\n        height: 80,\n        width: 80\n      }}\"></agm-marker>\n  </agm-map>\n"
 
 /***/ }),
 
@@ -73,6 +73,8 @@ var AppComponent = (function () {
             _this.description = data.weather[0].description;
             _this.icon = data.weather[0].icon;
             _this.image_url = "http://openweathermap.org/img/w/" + _this.icon + ".png";
+            _this.long = data.coord.lon;
+            _this.lat = data.coord.lat;
             console.log(_this.image_url);
             console.log(data);
         });
@@ -80,7 +82,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__("./src/app/app.component.html"),
         styles: [__webpack_require__("./src/app/app.component.css")],
@@ -102,7 +104,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__agm_core__ = __webpack_require__("./node_modules/@agm/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("./src/app/app.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -110,6 +113,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -124,16 +128,19 @@ var AppModule = (function () {
 AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]
+            __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* JsonpModule */]
+            __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* JsonpModule */],
+            __WEBPACK_IMPORTED_MODULE_4__agm_core__["a" /* AgmCoreModule */].forRoot({
+                apiKey: 'AIzaSyAU_3rZyQW9uxEcR-HuVwCuPZQisaz5md8'
+            })
         ],
         providers: [],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -179,7 +186,7 @@ var Weather = (function () {
     return Weather;
 }());
 Weather = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Jsonp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Jsonp */]) === "function" && _b || Object])
 ], Weather);
 

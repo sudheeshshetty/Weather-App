@@ -17,6 +17,7 @@ app.get('/',function(req,res){
 app.get('/weather',(req,res)=>{
   weather.setCity(req.query.city);
   weather.getAllWeather(function(err, JSONObj){
+    console.log(JSONObj);
         if(err){
           res.send(err);
         }
