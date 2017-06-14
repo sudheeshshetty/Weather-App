@@ -19,7 +19,7 @@
     "proxies": [
     {
         "path": "/api",
-        "proxyUrl": "http://api.steampowered.com"
+        "proxyUrl": "http://samples.openweathermap.org"
     }
 ]
   }

@@ -19,3 +19,9 @@
         </div>
     </div>
 </div>
+<div class="container text-center" *ngIf="this.climate != ''">
+  <h1>{{this.city |  uppercase}}</h1>
+  <p>{{this.climate}}:{{this.description}}</p>
+  <img class="climate-image" [src]="this.image_url"/>
+
+</div>

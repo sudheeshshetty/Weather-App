@@ -33,3 +33,7 @@ body
 .text{
     color: white;
 }
+.climate-image{
+  min-height: 30px;
+  min-width: 100px;
+}
